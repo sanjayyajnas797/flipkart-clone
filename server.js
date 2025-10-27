@@ -25,4 +25,6 @@ const getAnalogDataByDate = async (req, res) => {
 };
 
 
+
+
 module.exports = { getAnalogDataByDate };
