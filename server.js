@@ -1,30 +1,25 @@
-const { pool, sql, poolConnect } = require('./db');
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
-const getAnalogDataByDate = async (req, res) => {
+const Save = async (req, res) => {
   try {
-    await poolConnect; // ensure pool is ready
+    const { A1, A2, A3, A4 } = req.body;
 
-    const { from } = req.query;
-    if (!from) return res.status(400).json({ message: 'From date is required' });
+    // ✅ Correct Prisma create syntax
+    const data = await prisma.iBPS3_ANALOG.create({
+      data: {
+        A1,
+        A2,
+        A3,
+        A4,
+      },
+    });
 
-    const request = pool.request();
-    request.input('from', sql.Date, from);
-
-    const result = await request.query(`
-      SELECT [id], [DATE1], [TIME1], [A1], [A2], [A3], [A4]
-      FROM [SANJAY].[dbo].[IBPS3_ANALOG]
-      WHERE CONVERT(date, [DATE1]) = @from
-      ORDER BY [TIME1] ASC
-    `);
-
-    res.json(result.recordset);
-  } catch (err) {
-    console.error('❌ Error fetching data:', err);
-    res.status(500).json({ message: 'Error fetching data', error: err.message });
+    res.json({ message: "Data saved successfully", data });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error saving data" });
   }
 };
 
-
-
-
-module.exports = { getAnalogDataByDate };
+module.exports = { Save };

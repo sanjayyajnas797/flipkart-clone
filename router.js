@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { getAnalogDataByDate } = require('./server');
+const { Save } = require('./server');
 
-router.get('/analog/date', getAnalogDataByDate);
+router.post('/analog', Save);
 
 
 module.exports = router;

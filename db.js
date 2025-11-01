@@ -1,32 +1,15 @@
-const sql = require('mssql');
-require('dotenv').config();
+const { PrismaClient } = require('@prisma/client');
 
-const config = {
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  server: process.env.DB_SERVER,
-  database: process.env.DB_NAME,
-  port: 1433, // ✅ Add this
-  options: {
-    encrypt: false, // ✅ Set to false for local/internal network
-    trustServerCertificate: true,
-  },
-};
-
-const pool = new sql.ConnectionPool(config);
-let poolConnect = null;
+const prisma = new PrismaClient();
 
 const connect = async () => {
   try {
-    console.log('Connecting to SQL Server...');
-    if (!poolConnect) {
-      poolConnect = pool.connect();
-      await poolConnect;
-      console.log('✅ Connected to SQL Server');
-    }
+    console.log('Connecting to PostgreSQL via Prisma...');
+    await prisma.$connect();
+    console.log('✅ Connected to PostgreSQL');
   } catch (err) {
-    console.error('❌ SQL Server connection error:', err.message);
+    console.error('❌ Prisma connection error:', err.message);
   }
 };
 
-module.exports = { sql, pool, connect, poolConnect };
+module.exports = { prisma, connect };
