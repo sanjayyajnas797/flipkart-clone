@@ -1,25 +1,37 @@
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+const {PrismaClient}=require('@prisma/client')
 
-const Save = async (req, res) => {
-  try {
-    const { A1, A2, A3, A4 } = req.body;
+const prisma=new PrismaClient()
 
-    // ✅ Correct Prisma create syntax
-    const data = await prisma.iBPS3_ANALOG.create({
-      data: {
-        A1,
-        A2,
-        A3,
-        A4,
-      },
-    });
-
-    res.json({ message: "Data saved successfully", data });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Error saving data" });
+const Register=async(req,res)=>{
+  try{
+  const {email,password}=req.body
+  
+  const data=await prisma.register.create({
+    data:{
+      email,password
+    }
+  })
+  res.json(data)
+  }catch(error){
+  res.json("error")
+  console.log(error)
   }
-};
+}
 
-module.exports = { Save };
+const Login=async(req,res)=>{
+  try{
+    const {email,password}=req.body
+    const data=await prisma.register.findFirst({
+      where:{email,password}
+    })
+    if(!data){
+        return res.status(500).json({msg:"invalid email"})
+    }
+  
+    res.json("login sucess")
+    
+  }catch(error){
+   res.status(500).json({ msg: "Internal error" });
+  }
+}
+module.exports={Register,Login}

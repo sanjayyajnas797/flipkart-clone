@@ -1,0 +1,18 @@
+.payment-container {
+  width: 60%;
+  margin: auto;
+  padding-top: 40px;
+}
+
+.payment-box button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background: #2874f0;
+  border: none;
+  color: white;
+  margin: 10px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+}

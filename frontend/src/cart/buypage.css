@@ -1,0 +1,34 @@
+.buy-container {
+  width: 60%;
+  margin: auto;
+  padding-top: 30px;
+}
+
+.buy-card {
+  display: flex;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  border-radius: 6px;
+}
+
+.buy-img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+}
+
+.buy-info {
+  margin-left: 20px;
+}
+
+.payment-btn {
+  margin-top: 20px;
+  background: #fb641b;
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}

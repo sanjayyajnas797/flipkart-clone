@@ -1,0 +1,76 @@
+/* FULL SCREEN CENTER */
+.login-container {
+  width: 700px;
+  height: 430px;
+  display: flex;
+  margin: 50px auto;
+  box-shadow: 0 0 15px #00000033;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+/* LEFT BLUE PANEL */
+.login-left {
+  width: 40%;
+  background-color: #2874f0;
+  color: white;
+  padding: 30px;
+}
+
+.login-left h1 {
+  font-size: 24px;
+}
+
+.login-left p {
+  margin-top: 20px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* RIGHT WHITE PANEL */
+.login-right {
+  width: 60%;
+  padding: 30px;
+  background: #fff;
+}
+
+.login-right form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-right input {
+  padding: 12px;
+  border: 1px solid #bfbfbf;
+  border-radius: 3px;
+  font-size: 15px;
+}
+
+.main-btn {
+  background-color: #fb641b;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.main-btn:hover {
+  background-color: #e65a10;
+}
+
+/* TOGGLE TEXTS */
+.toggle-texts {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.toggle-texts p {
+  cursor: pointer;
+  font-size: 14px;
+  color: #2874f0;
+}

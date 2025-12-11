@@ -1,8 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const { Save } = require('./server');
+const express=require('express')
 
-router.post('/analog', Save);
+const router=express.Router()
 
+const {Register,Login}=require('./server')
 
-module.exports = router;
+router.post('/save',Register)
+router.post('/login',Login)
+
+module.exports=router

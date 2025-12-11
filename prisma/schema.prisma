@@ -9,11 +9,8 @@ datasource db {
 }
 
 
-model IBPS3_ANALOG {
+model Register {
   id      Int      @id @default(autoincrement())
-
- A1   String?
-  A2   String?
-  A3   String?
-  A4   String?
+  email   String 
+  password  String
 }
